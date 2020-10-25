@@ -1,4 +1,4 @@
-# Set up name and email address
+# Day 1
 
 
 ## 1. Setting up name and email address
@@ -37,9 +37,11 @@ git config --global core.safecrlf warn
 
 
 ## 4. Add and commit the changes
-`git add .`: to stage the changes
-`git reset .`: to unstage changes
-`git commit -m "initial commit"`: to make use of version control and save the snapshot of current code in history
+`git add .`: to stage the changes of all files
+`git add <file>`: to stage the changes of <file>
+`git reset .`: to unstage changes from all files (before commiting)
+`git reset HEAD <file>`: to unstage changes from <file> (before commiting)
+`git commit -m "initial commit"`: to make use of version control and save the snapshot of current code in history. Only the staged files are commited.
 
 
 
