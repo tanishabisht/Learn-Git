@@ -1,118 +1,70 @@
-# Git Commands Cheat-sheet
-This repo is my go to guide for git commands.
-<br/><br/><br/><br/><br/><br/>
+# Learn - Git
 
+Welcome to the Git Command Reference! This guide offers a concise overview of the most common Git commands. Whether you're just starting out or in need of a quick refresher, these commands are fundamental to managing your repositories and optimizing your Git workflows.
 
+This cheat sheet covers a broad range of commands from basic setup and configuration to advanced repository management. It is designed to be a valuable resource for both beginners and experienced Git users. For a deeper understanding of each command and their options, consult the Git documentation or use `git help [command]`.
 
+## Setup and Config
+1. **`git config --global user.name "[name]"`**: Set the name that will be attached to your commits and tags.
+2. **`git config --global user.email "[email address]"`**: Set the email you will use for your commits.
+3. **`git config --global core.editor "[editor]"`**: Set your preferred text editor.
+4. **`git config --list`**: List all settings Git can find at different scopes.
+5. **`git config user.name`**: View the name you have configured for git.
+6. **`git config user.email`**: View the email you have configured for git.
 
+## Creating Projects
+7. **`git init`**: Initialize a local Git repository.
+8. **`git clone [url]`**: Create a local copy of a remote repository.
 
-# Some more Common Terms
+## Basic Snapshotting
+9. **`git status`**: Check the status of your files in the working directory and staging area.
+10. **`git add [file]`**: Add a file as it looks now to your next commit (stage).
+11. **`git reset [file]`**: Unstage a file while retaining the changes in the working directory.
+12. **`git diff`**: Diff of what is changed but not staged.
+13. **`git diff --staged`**: Diff of what is staged but not yet committed.
+14. **`git commit -m "[descriptive message]"`**: Commit your staged content as a new commit snapshot.
+15. **`git rm [file]`**: Remove a file from your working directory and the index.
 
-## Fork
-A repo in A's gitHub ---> A's repo copy in my gitHub
+## Branching and Merging
+16. **`git branch`**: List your branches. A * will appear next to the currently active branch.
+17. **`git branch [branch-name]`**: Create a new branch at the current commit.
+18. **`git checkout [branch-name]`**: Switch to another branch and check it out into your working directory.
+19. **`git merge [branch]`**: Merge the specified branch’s history into the current one.
+20. **`git branch -d [branch-name]`**: Delete a branch.
 
-## Clone
-to save your repo in your local machine
-- go to the directory where you want to save your repo
-- `git clone https://github.com/{username}/{repo}.git`
+## Sharing and Updating Projects
+21. **`git push [alias] [branch]`**: Transmit local branch commits to the remote repository branch.
+22. **`git pull`**: Fetch and merge any commits from the tracking remote branch.
+23. **`git remote add [alias] [url]`**: Add a git URL as an alias.
+24. **`git fetch [alias]`**: Fetch all branches from the given remote.
 
-## .gitignore file
-This file contains list of files that we dont want to update to our remote repo (i.e. gitHub)
-<br/><br/><br/><br/><br/><br/>
+## Inspection and Comparison
+25. **`git log`**: Show the commit history for the currently active branch.
+26. **`git log --follow [file]`**: Show the commits that changed file, even across renames.
+27. **`git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short`**: Best way to see the history.
+28. **`git diff [first-branch]...[second-branch]`**: Show content differences between two branches.
+29. **`git show [commit]`**: Show the metadata and content changes of the specified commit.
 
+## Stashing and Cleaning
+30. **`git stash`**: Stash your modifications to a dirty working directory.
+31. **`git stash pop`**: Apply stashed changes back to your working directory.
+32. **`git stash list`**: List stack-order of stashed file changes.
+33. **`git stash drop`**: Discard the changes from the top of the stash stack.
 
+## Tagging
+34. **`git tag [commitID]`**: Tag a specific commit with a simple, memorable name.
+35. **`git tag v1`**: Tag the current version of your project as v1.
+36. **`git tag -d v1`**: Remove the tag.
+37. **`git checkout v1`**: Checkout to the version tagged as v1.
 
+## Git Rebase
+38. **`git rebase [branch]`**: Apply any commits of current branch ahead of specified one.
 
+## Setting up Aliases for Commands
+39. **`git config --global alias.co checkout`**
+40. **`git config --global alias.st status`**
 
-
-# General commands
-
-## git status
-to check the current status i.e. the current staging area location of your various files.
-
-## git log --oneline
-gives list of all the commits you made in the current branch you are in.
-
-## git remote -v
-displays current remote server URL
-```
-Fetch URL: /Users/alex/Documents/Presentations/githowto/auto/hello
-Push  URL: /Users/alex/Documents/Presentations/githowto/auto/hello
-```
-<br/><br/><br/><br/><br/><br/>
-
-
-
-
-# Transfering code from Local Repo to Remote Repo
-
-## git init
-to initialize a git repo for new or existing projects
-
-## git add <file_name>
-to add <file_name> to the staging area
-
-## git add .
-to add all files to the staging area
-
-## git rm --cached <file_name>
-to undo `git add` i.e. to remove file from staging area
-
-## git commit -m "commit message"
-this marks the check point of the branch, which means the snapshot of all your data is saved in the logs, which means you can get back to this position anytime at the development process.
-
-## git commit -am "commit mssg"
-If you want to add and commit in the same line
-
-## Defining origin
-This is to set the remote server URL, i.e. to which repo you want to push your code to.
-```
-git remote remove origin
-git remote add origin https://github.com/{username}/{repo}.git
-```
-
-## git push -u origin <branch_name>
-to push a particular branch to the repo which is defined in the origin.
-<br/><br/><br/><br/><br/><br/>
-
-
-
-
-
-# Transfering code from other's Remote Repo to my Local machine
-```
-NOTE: 
-git pull = git fetch + git merge
-```
-
-## git pull
-When many people are working on the same project. The project is undergoing constant changes. And to update your local repo, you pull data from the <branch_name> of the repo.
-
-- Set the correct origin of the repo we need to update our code from
-- Set the correct branch of the repo we need to update our code from
-- `git pull`
-<br/><br/><br/><br/><br/><br/>
-
-
-
-
-
-
-# Branch Traversal
-
-## git branch <new_branch_name>
-to create a new branch with the name **'new_branch_name'**
-
-## git checkout <branch_name>
-to switch from one branch to another. The main branch is called master branch.
-
-## **Merge side branch in the LOCAL REPOSITORY**
-
-## git merge <branch_name>
-to merge branch_name to current branch
-
-## **Merge side branch to master branch in REMOTE REPOSITORY**
-
-- Request the owner of the master branch to merge my code. This is called **pull request**.
-  - compare and pull request >> Write a comment >> CREATE PULL REQUEST
-  - (this step is for those who are having merge rights): Merge PR >> CONFIRM MERGE
+## Undoing Changes
+41. **`git revert [commit]`**: Generate a new commit that undoes all of the changes introduced in [commit], then apply it to the current branch.
+42. **`git reset --hard [commit]`**: Reset your index and working directory to the state of a specific commit and discard all changes since then.
+43. **`git reset --soft [commit]`**: Move the HEAD to a previous commit, keeping the staged changes.
